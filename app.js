@@ -46,6 +46,28 @@ app.use(function(req,res,next) {
     res.locals.session = req.session;
     next();
 });
+//Declaro aqui el autologout
+app.use(function(req,res,next){
+   
+    if(req.session.user){
+         var horaantes = new Date();
+        var diferencia= horaantes.getSeconds() - req.session.seconds;
+
+        if (diferencia>120){
+            delete req.session.user;
+            res.redirect(req.session.redir.toString());
+        }
+        else{
+        req.session.seconds= horaantes.getSeconds();
+        next();
+        }
+    }
+    else{
+        next();
+    }
+
+});
+
 
 //Instalar enrutadores y asociar rutas a sus gestores
 app.use('/', routes);
