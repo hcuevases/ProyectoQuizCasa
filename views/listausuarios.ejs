@@ -1,0 +1,13 @@
+<h1>Busqueda de usuarios en el foro</h1>
+
+<form method="get" action="listausuarios">
+	Buscar usuario : 
+    <input type="text" name="search" />
+    <input type="submit" value="Buscar" />
+   
+</form>
+<% for (var i =0; i<user.length; i++){ %>
+	
+	<p> <%= user[i].username %></p>
+
+<%}%>

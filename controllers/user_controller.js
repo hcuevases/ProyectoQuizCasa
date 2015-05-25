@@ -81,6 +81,25 @@ exports.update = function(req, res, next) {
 		} 
 	}).catch(function(error){next(error)});
 };
+//Busqueda de usuarios
+/*exports.buscar = function(req,res){
+	if(req.query.busqueda != null){
+	var search = '%' + req.query.busqueda + '%';
+	models.User.findAll( {
+	 	where:["user like ?", search]}).then(function(user){
+
+	 		res.render('listausuarios', { user :user, errors :[]
+	 		});
+
+	 	}).catch(function(error) {next(error)});
+	 }else{
+	 	models.Quiz.findAll(options).then(function (user) {
+
+	 	res.render('listausuarios', { user : user, errors: []});
+		}).catch(function(error) { next(error);});
+	 }
+};
+*/
 
 // DELETE /user/:id
 exports.destroy = function(req, res) {

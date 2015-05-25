@@ -1,0 +1,15 @@
+<h1>Estadisticas de uso del foro</h1>
+
+<form method="get" action="/quizes">
+	Buscar: 
+    <input type="text" name="busqueda" />
+    <% if(session.user) { %>
+    <input type="submit" value="Buscar" />
+     <% } %> 
+</form>
+
+<ul>
+
+<li>Usuario: <%= user %> </li>
+
+</ul> 
