@@ -21,3 +21,4 @@ exports.buscar = function(req,res){
 		}).catch(function(error) { next(error);});
 	 }
 };
+

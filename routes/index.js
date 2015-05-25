@@ -10,6 +10,8 @@ var sessionController = require('../controllers/session_controller');
 var userController = require('../controllers/user_controller');
 var statsController = require('../controllers/stats_controller');
 var busqController = require ('../controllers/busq_controller');
+//var favController = require ('../controllers/fav_controller');
+
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -34,10 +36,14 @@ router.put('/user/:userId(\\d+)', sessionController.loginRequired, userControlle
 router.delete('/user/:userId(\\d+)', sessionController.loginRequired, userController.ownershipRequired, userController.destroy); 
 router.get('/user/:userId(\\d+)/quizes', quizController.index); 
 
-//router.get('listausuarios', busqController.buscar);
-//router.get('listausuarios?busqueda=:busqueda(\\w)', busqController.buscar);///
-//router.get('/listausuarios', busqController.buscar);
+//Cajetin de busqueda de usuarios
 router.get('/listausuarios',busqController.buscar);
+//router.get('/listausuarios', busqController.buscarPreguntas);
+
+//Rutas para favoritos
+//router.get('/user/:userId(\\d+)/favourites',sessionController.loginRequired, userController.ownershipRequired, favController.mostrar);
+//router.put('/user/:userId(\\d+)/favourites/:quizId(\\d+)',sessionController.loginRequired, userController.ownershipRequired, favController.añadir);
+//router.delete('/user/:userId(\\d+)/favourites/:quizId(\\d+)',sessionController.loginRequired, userController.ownershipRequired, favController.destroy);
 
 //Rutas para las preguntas
 router.get('/quizes', quizController.index);
